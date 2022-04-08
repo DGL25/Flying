@@ -1,0 +1,261 @@
+@media (min-width:275px) and (max-width:1030px) {
+    #menu-pop:checked ~ #nav-bar{
+        width: 100%;height: 200px;
+
+        @media (min-width:275px) and (max-width:450px){height: 50vh;}
+
+        #navigation{
+            .nav-list{
+                display: flex;
+                opacity: 1;
+                
+                &:nth-child(1){
+                    height: 50px;
+
+                    .item-nav{
+                        &:nth-child(2){
+                            #btn-menu{
+                                .circles{background: $verde;}
+                            }
+                        }
+                    }
+                }
+
+                &:nth-child(2){
+                    @include flex();
+                    @media (min-width:275px) and (max-width:450px){flex-direction: column;}
+
+                    .item-nav{
+                        @include flex();
+                        cursor: pointer;
+                        transition: .25s all;
+                        
+                        .icon{border-radius: 0;margin-right: 10px}
+                        p{font-weight: 500;}
+
+                        &:nth-child(1){
+                            .icon{
+                                width: 22.5px;height: 20px;
+                                background: transparent url('../media/svg/plane-solid.svg') no-repeat center center;background-size: cover;
+                                display: flex;
+                            }
+                        }
+
+                        &:nth-child(2){
+                            .icon{
+                                position: relative;
+                                top: -1px;
+                                width: 20px;height: 20px;
+                                background: transparent url('../media/svg/hotel-solid.svg') no-repeat center center;background-size: cover;
+                                display: flex;
+                            }
+                            margin: 0 25px;
+                            
+                        @media (min-width:275px) and (max-width:450px){margin: 25px 0;}
+                        }
+
+                        &:nth-child(3){
+                            .icon{
+                                position: relative;
+                                top: -3px;
+                                width: 17.5px;height: 20px;
+                                background: transparent url('../media/svg/car-on-solid.svg') no-repeat center center;background-size: cover;
+                                display: flex;
+                            }
+                        }
+                    }
+                }
+
+                &:nth-child(3){
+                    @include flex();
+
+                    .item-nav{
+                        cursor: pointer;
+                        transition: .25s all;
+
+                        &:nth-child(1):hover{color: $verde;}
+
+                        &:nth-child(2){
+                            margin: 0 15px;
+                            width: 2px;height: 25px;
+                            background: #fff;
+                        }
+
+                        &:nth-child(3){
+                            font-weight: 600;font-size: 1.25em;
+                            color: $verde;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #nav-bar{
+        top: 20px;
+        position: fixed;
+        padding: 0 20px;
+        width: 100vw;height: 50px;
+        background: transparent;
+        
+        @media (min-width:360px) and (max-width: 1030px){padding: 0 25px;}
+
+        #navigation{
+            position: relative;
+            width: 100%;height: 100%;
+            background: $azulEscuro2;
+            display: grid; place-items: center;
+
+            .nav-list{
+                transition: .5s all;
+
+                &:nth-child(1){
+                    width:100%;height: 100%;
+                    @include flex();
+                    justify-content: space-between;
+                    padding: 0 25px;
+
+                    @media (min-width:360px) and (max-width: 450px){padding: 0 25px;}
+
+                    @media (min-width:720px) and (max-width: 1030px){padding: 0 50px;}
+
+                    .item-nav{
+                        &:nth-child(1){
+                            #logo{
+                                background: transparent url('../media/svg/flying-logo-nome-branca.svg') no-repeat center center;background-size: cover;
+                                width: 90.44px;height: 25px;
+                                display: block;
+                                @media (min-width:720px) and (max-width: 1030px){width: 108.52px;height: 30px;}
+                            }
+                        }
+                        &:nth-child(2){
+                            #btn-menu{
+                                @include flex();
+                                flex-direction: column;
+                                width: 32px;height: 32px;
+                                cursor: pointer;
+
+                                .circles{
+                                    position: relative;
+                                    display: flex;
+                                    width: 8px;height: 8px;
+                                    border-radius: 50%;
+                                    background: #fff;
+                                    transition: .25s all;
+
+                                    &:nth-child(2){
+                                        margin: 4px 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &:nth-child(2),&:nth-child(3){display: none;opacity: 0;}
+            }
+        }
+    }
+}
+
+@media (min-width:1030px) {
+    #nav-bar{
+        position: fixed;
+        top: 25px;
+        padding: 0 50px;
+        width: 100vw;height: 75px;
+        background: transparent;
+
+        #navigation{
+            position: relative;
+            width: 100%;height: 100%;
+            background: $azulEscuro2;
+            @include flex(); justify-content: space-between;
+            padding: 0 75px;
+
+            .nav-list{
+                &:nth-child(1){
+                    .item-nav{
+                        &:nth-child(1){
+                            #logo{
+                                background: transparent url('../media/svg/flying-logo-nome-branca.svg') no-repeat center center;background-size: cover;
+                                width: 126.61px;height: 35px;
+                                display: block;
+                            }
+                        }
+                        &:nth-child(2){
+                            display: none;
+                        }
+                    }
+                }
+
+                &:nth-child(2){
+                    @include centerAbsolute();
+                    @include flex();
+
+                    .item-nav{
+                        @include flex();
+                        cursor: pointer;
+                        transition: .25s all;
+
+                        &:hover{color: $verde;}
+                        
+                        .icon{border-radius: 0;margin-right: 10px}
+                        p{font-weight: 500;}
+
+                        &:nth-child(1){
+                            .icon{
+                                width: 22.5px;height: 20px;
+                                background: transparent url('../media/svg/plane-solid.svg') no-repeat center center;background-size: cover;
+                                display: flex;
+                            }
+                        }
+
+                        &:nth-child(2){
+                            .icon{
+                                position: relative;
+                                top: -1px;
+                                width: 20px;height: 20px;
+                                background: transparent url('../media/svg/hotel-solid.svg') no-repeat center center;background-size: cover;
+                                display: flex;
+                            }
+                            margin: 0 25px;
+                        }
+
+                        &:nth-child(3){
+                            .icon{
+                                position: relative;
+                                top: -3px;
+                                width: 17.5px;height: 20px;
+                                background: transparent url('../media/svg/car-on-solid.svg') no-repeat center center;background-size: cover;
+                                display: flex;
+                            }
+                        }
+                    }
+                }
+
+                &:nth-child(3){
+                    @include flex();
+
+                    .item-nav{
+                        cursor: pointer;
+                        transition: .25s all;
+
+                        &:nth-child(1):hover{color: $verde;}
+
+                        &:nth-child(2){
+                            margin: 0 15px;
+                            width: 2px;height: 45px;
+                            background: #fff;
+                        }
+
+                        &:nth-child(3){
+                            font-weight: 600;font-size: 1.25em;
+                            color: $verde;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
