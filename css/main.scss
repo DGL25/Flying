@@ -11,17 +11,506 @@ $verde: #50d88a;
     transform: translate(-50%,-50%);
 }
 
+@mixin btn() {
+    width: 175px;height: 45px;
+    background: $verde;color: #fff;
+    text-shadow: 0 2.5px 5px rgba(0,0,0,.5);
+    font-weight: 700;font-size: 1.25em;
+    cursor: pointer;
+}
+
 *{
     padding: 0;margin: 0;
     box-sizing: border-box;
     font-size: 1em;font-weight: 300;font-family: 'Montserrat', sans-serif;
     text-decoration: none;
     list-style: none;
-    border: none;border-radius: 5px;
+    border: none;border-radius: 1.5px;
+    outline: none;
 
     #menu-pop{display: none;}
 
-    #nav-bar{color: #fff;transition: .25s;}
+    #nav-bar{color: #fff;transition: .25s;z-index: 99;}
+
+    #menu-pop:checked ~ #nav-bar{#navigation{background: $azulEscuro;}}
+
+    .title{span{font-weight: 500;}}
+
+    .btn{@include btn();}
+}
+
+#content{
+    display: grid; place-items: center;
+    #banner{
+        position: relative;
+        width: 100%;height: 600px;
+        background: $verde url('../media/img/pexels-nina-uhlíková-725255.jpg') no-repeat center center; background-size: cover;
+        @include flex();
+        justify-content: start;
+        flex-direction: column;
+        color: #fff;
+        border-radius: 0;
+        text-align: center;
+
+        &::after{
+            content: '';
+            @include centerAbsolute();
+            width: 100%;height: 100%;
+            background: linear-gradient(180deg,rgba(0,0,0,.25), rgba(0,0,0,75));
+        }
+
+        #title-banner,#subtitle-banner,.btn{z-index: 1;transition: .25s;}
+        
+        #title-banner{margin-top:200px;width:1000px;font-size:4.25em;span{font-weight: 600;}}
+
+        #subtitle-banner{font-weight: 400;font-size:1.8125em;margin: 25px 0 50px 0;}
+
+        .btn{
+            width: 200px;
+        }
+
+        @media (min-width:275px) and (max-width:1024px) {
+            height: 452px;
+
+            #title-banner{margin-top: 120px;width: 280px;font-size: 2.375em;}
+
+            #subtitle-banner{font-size: 1.25em;}
+        
+            @media (min-width:680px) and (max-width:1024px) {
+                height: 464px;
+    
+                #title-banner{margin-top:150px;width: 670px;font-size: 2.9375em;}
+
+                #subtitle-banner{font-size: 1.5625em;}
+            }
+        }
+    }
+
+    #offers{
+        #title-offers{
+            margin: 100px 0 50px 0;
+            font-size: 2.9375em;
+        }
+
+        #img-btns{
+            width: 1030px;height: 475px;
+            display: grid;grid-gap: 35px;
+            grid-template-columns: repeat(3,1fr);
+            grid-template-rows: 1fr;
+
+            .btn-img{
+                position: relative;
+                padding: 25px;
+                @include flex();
+                align-items: flex-end;
+                justify-content: start;
+                width: 320px;height: 475px;
+                border-radius: 5px;
+                box-shadow: 0 10px 10px rgba(0,0,0,.25);
+                background: $verde url('../media/img/pexels-pixabay-64271.jpg') no-repeat center center; background-size: cover;
+                transition: .25s;
+                cursor: pointer;
+
+                &::after{
+                    content: '';
+                    @include centerAbsolute();
+                    width: 100%;height: 100%;
+                    border-radius: 5px;
+                    background: linear-gradient(180deg,rgba(0,0,0,.25), rgba(0,0,0,1));
+                }
+
+                .title-btn-img{color: #fff;z-index: 1;font-size: 1.8125em;}
+
+                &:nth-child(2){
+                    background: $verde url('../media/img/pexels-dlkr-5436911.jpg') no-repeat center center; background-size: cover;
+                }
+
+                &:nth-child(3){
+                    background: $verde url('../media/img/pexels-louis-1530259.jpg') no-repeat center center; background-size: cover;
+                }
+
+                &:hover{
+                    transform: translateY(-10px);
+                    box-shadow: 0 25px 10px rgba(0,0,0,.1);
+                }
+            }
+        }
+
+        @media (min-width:275px) and (max-width:1045px) {
+            text-align: center;
+            display: grid;place-items:center;
+
+            #title-offers{
+                margin: 50px 0;
+                font-size: 1.8125em;
+                @media (min-width:275px) and (max-width:420px) {
+                    width: 280px;
+                }
+            }
+
+            #img-btns{
+                width: 100%;height: 1591px;
+                grid-gap: 35px 0;place-items: center;
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(3,1fr);
+                
+
+                @media (min-width:275px) and (max-width:420px){
+                    width: 250px;height:1163px;
+                    grid-gap: 25px 0;
+
+                    .btn-img{
+                        width: 250px;height: 371px;
+    
+                        .title-btn-img{font-size: 1.25em;}
+                    }
+                }
+
+                @media (min-width:420px) and (max-width:720px){
+                    height: 1495px;
+                }
+
+            }
+        }
+    }
+
+    #explore{
+        position: relative;
+        #title-explore{font-size: 2.8125em;font-weight: 400;margin-top: 75px;}
+
+        #subtitle-explore{font-size: 1.8125em;margin: 25px 0 50px 0;}
+
+        #cards-buy{
+            display: grid;grid-gap: 0 100px;
+            grid-template-columns: repeat(2,1fr);
+            grid-template-rows: 1fr;
+            .card{
+                position: relative;
+                padding: 25px;
+                width: 465px;height: 600px;
+                @include flex();
+                align-items: flex-start;justify-content: end;flex-direction: column;
+                background: $verde url('../media/img/pexels-christian-paul-del-rosario-1076240.jpg') no-repeat center center;background-size: cover;
+                color:#fff;
+                border-radius: 5px;
+                box-shadow: 0 10px 10px rgba(0,0,0,.25);
+
+                &:nth-child(2){
+                    background: $verde url('../media/img/pexels-joanne-adela-low-7478616.jpg') no-repeat center center;background-size: cover;
+                }
+
+                &::after{
+                    content: '';
+                    @include centerAbsolute();
+                    width: 100%;height: 100%;
+                    border-radius: 5px;
+                    background: linear-gradient(180deg,rgba(0,0,0,.25), rgba(0,0,0,1));
+                }
+
+                *{z-index: 1;}
+
+                .title-card{font-weight: 400;font-size: 1.8125em;}
+
+                .text-card{margin: 10px 0 25px 0;}
+            }
+        }
+
+        @media (min-width:275px) and (max-width:1045px) {
+            display: grid;place-items:center;
+
+            #title-explore,#subtitle-explore{text-align: center;}
+            
+            #title-explore{font-size: 1.8125em;font-weight: 400;margin-top: 50px;}
+
+            #subtitle-explore{font-size: 1.25em;width: 235px;}
+
+            #cards-buy{
+                grid-gap: 25px 0;
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(2,1fr);
+
+                @media (min-width:275px) and (max-width:420px){
+                    .card{
+                        width: 280px;height: 361px;
+    
+                        .title-card{font-size: 1.25em;}
+                    }
+                }
+            }
+
+            @media (min-width:420px) and (max-width:720px) {
+                #subtitle-explore{width: 378px;}
+                
+                #cards-buy{
+                    .card{
+                        width: 345px;height: 445px;
+
+                        .title-card{font-size: 1.25em;}
+                    }
+                }
+            }
+
+            @media (min-width:720px) and (max-width:1024px) {
+                #title-explore{font-size: 2.8125em;margin-top: 75px;}
+
+                #subtitle-explore{width: 650px;font-size: 1.5em;}
+                
+                #cards-buy{
+                    grid-gap: 50px 0;
+                    .card{
+                        .title-card{font-size: 1.8125em;}
+                    }
+                }
+            }
+        }
+    }
+
+    #contact{
+        display: grid;place-items:center;
+        *{
+            transition: .5s;
+        }
+        #title-contact{
+            margin: 75px 0 50px 0;
+            font-size: 2.9375em;
+        }
+
+        #form-camps{
+            display: grid;grid-gap: 25px;
+            grid-template-areas: 'nome email'
+                                'textArea textArea'
+                                'listBtn listBtn';
+            
+            input[type="text"]{
+                padding: 15px 20px;
+                height: 45px;width:475px;
+                box-shadow: 0 0 10px rgba(0,0,0,.25);
+                    
+                &:nth-child(1){grid-area: nome;}
+                &:nth-child(2){grid-area: email;}
+            }
+
+            textarea{
+                grid-area: textArea;
+                padding: 20px;
+                min-width: 975px;min-height: 250px;
+                max-width: 975px;max-height: 250px;
+                box-shadow: 0 0 10px rgba(0,0,0,.25);
+            }
+       
+            #list-btn{
+                grid-area: listBtn;
+                width: 975px;
+                @include flex();
+                align-items: flex-end;
+                justify-content: space-between;
+                flex-direction: row;
+                #contact-list{
+                    @include flex();
+                    li{
+                        font-size: .875em;
+                        white-space: nowrap;
+
+                        &:nth-child(2){margin: 0 25px;}
+                    }
+                }
+            }
+
+            .btn{
+                background: $azul;
+            }
+        }
+
+        @media (min-width:275px) and (max-width:1024px) {
+            #title-contact{
+                width: 280px;
+                font-size: 1.8125em;
+                text-align: center;
+                margin: 75px 0 50px 0;
+            }
+
+            #form-camps{
+                width: 100%;
+                @media (min-width:275px) and (max-width:719px) {
+                    grid-gap: 25px 0;
+                    grid-template-areas: 'nome'
+                                    'email'
+                                    'textArea'
+                                    'listBtn';
+                }
+
+                input[type="text"]{
+                    padding: 15px 20px;
+                    height: 45px;width:280px;
+                    box-shadow: 0 0 10px rgba(0,0,0,.25);
+                }
+
+                textarea{
+                    padding: 15px 20px;
+                    min-width: 280px;min-height: 150px;
+                    max-width: 280px;max-height: 150px;
+                    box-shadow: 0 0 10px rgba(0,0,0,.25);
+                }
+
+                #list-btn{
+                    width: 100%;
+                    @include flex();
+                    justify-content: space-between;
+                    flex-direction: column-reverse;
+
+                    #contact-list{
+                        display: block;
+                        text-align: center;
+                        li:nth-child(2){margin: 10px 0;}
+                    }
+                }
+
+                .btn{margin-bottom: 25px;}
+            }
+
+            @media (min-width:428px) and (max-width:720px) {
+                #title-contact{width: 320;}
+                #form-camps{
+                    padding: 0 25px;
+                    input[type="text"]{width:378px;}
+
+                    textarea{min-width: 378px;max-width: 378px;}
+
+                    #list-btn{
+                        width: 378px;
+                        #contact-list{
+                            @include flex();
+                            li:nth-child(2){margin: 0 15px;}
+                        }
+                    }
+                }
+            }
+
+            @media (min-width:720px) and (max-width:1024px) {
+                #title-contact{width: 505px;font-size: 2.375em;}
+                #form-camps{
+                    padding: 0 25px;
+                    input[type="text"]{width:320px;}
+
+                    textarea{
+                        min-width: 670px;min-height: 250px;
+                        max-width: 670px;max-height: 250px;
+                    }
+
+                    #list-btn{
+                        width: 670px;
+                        flex-direction: row;
+                        #contact-list{
+                            @include flex();
+                            li:nth-child(2){margin: 0 25px;}
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #newsletter{
+        display: grid;place-items: center;
+        text-align: center;
+        #title-newsletter{
+            margin: 75px 0 25px 0;
+            font-size: 2.9375em;font-weight: 500;
+        }
+
+        #subtitle-newsletter{font-size: 1.8125em;margin-bottom: 40px;}
+
+        input[type="text"]{
+            padding: 15px 20px;
+            width: 575px;height: 45px;
+            box-shadow: 0 0 10px rgba(0,0,0,.25);
+            display: block;
+        }
+
+        .btn{background: $azul;margin: 25px 0 100px 0;}
+
+        @media (min-width:275px) and (max-width:1024px) {
+            #title-newsletter{
+                margin: 50px 0 25px 0;
+                font-size: 1.8125em;
+            }
+
+            #subtitle-newsletter{font-size: 1.25em;width: 280px;margin-bottom: 20px;}
+
+            input[type="text"]{width: 280px;}
+
+            .btn{margin: 25px 0 50px 0;}
+
+            @media (min-width:428px) and (max-width:719px){
+                input[type="text"]{width: 378px;}
+            }
+
+            @media (min-width:720px) and (max-width:1024px){
+                #title-newsletter{
+                    margin: 75px 0 25px 0;
+                    font-size: 2.375em;
+                }
+    
+                #subtitle-newsletter{font-size: 1.5em;width: 480px;margin-bottom: 40px;}
+
+                input[type="text"]{width: 575px;}
+
+                .btn{margin: 25px 0 75px 0;}
+            }
+        }
+    }
+}
+
+#rodape{
+    padding: 50px;
+    height: 125px;
+    background: $azulEscuro;
+    @include flex();
+    justify-content: space-between;
+
+    #list-icons{
+        @include flex();
+        .item-icons{
+            margin-right: 10px;
+            cursor: pointer;
+            width: 25px;height: 25px;
+            background: $azulEscuro url('../media/svg/facebook.svg') no-repeat center center; background-size: cover;
+
+            &:nth-child(2){
+                background: $azulEscuro url('../media/svg/vimeo.svg') no-repeat center center; background-size: cover;
+            }
+
+            &:nth-child(3){
+                background: $azulEscuro url('../media/svg/twitter.svg') no-repeat center center; background-size: cover;
+            }
+
+            &:nth-child(4){
+                background: $azulEscuro url('../media/svg/insta.svg') no-repeat center center; background-size: cover;
+            }
+
+            &:nth-child(5){
+                background: $azulEscuro url('../media/svg/pinteerest.svg') no-repeat center center; background-size: cover;
+            }
+
+            &:nth-child(6){
+                background: $azulEscuro url('../media/svg/linkedin.svg') no-repeat center center; background-size: cover;
+            }
+        }
+    }
+
+    a{
+        color: #fff;
+        font-size: .875em;
+    }
+
+    @media (min-width:275px) and (max-width:719px){
+        padding: 25px 50px;
+        flex-direction: column;
+
+        #list-icons{
+            margin-bottom: 25px;
+        }
+    }
 }
 
 @import 'nav-bar'

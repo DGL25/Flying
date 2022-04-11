@@ -1,17 +1,13 @@
 @media (min-width:275px) and (max-width:1030px) {
     #menu-pop:checked ~ #nav-bar{
-        width: 100%;height: 200px;
-
-        @media (min-width:275px) and (max-width:450px){height: 50vh;}
 
         #navigation{
+            height: 150px;
+            @media (min-width:275px) and (max-width:450px){
+                height: 250px;
+            }
             .nav-list{
-                display: flex;
-                opacity: 1;
-                
                 &:nth-child(1){
-                    height: 50px;
-
                     .item-nav{
                         &:nth-child(2){
                             #btn-menu{
@@ -21,72 +17,7 @@
                     }
                 }
 
-                &:nth-child(2){
-                    @include flex();
-                    @media (min-width:275px) and (max-width:450px){flex-direction: column;}
-
-                    .item-nav{
-                        @include flex();
-                        cursor: pointer;
-                        transition: .25s all;
-                        
-                        .icon{border-radius: 0;margin-right: 10px}
-                        p{font-weight: 500;}
-
-                        &:nth-child(1){
-                            .icon{
-                                width: 22.5px;height: 20px;
-                                background: transparent url('../media/svg/plane-solid.svg') no-repeat center center;background-size: cover;
-                                display: flex;
-                            }
-                        }
-
-                        &:nth-child(2){
-                            .icon{
-                                position: relative;
-                                top: -1px;
-                                width: 20px;height: 20px;
-                                background: transparent url('../media/svg/hotel-solid.svg') no-repeat center center;background-size: cover;
-                                display: flex;
-                            }
-                            margin: 0 25px;
-                            
-                        @media (min-width:275px) and (max-width:450px){margin: 25px 0;}
-                        }
-
-                        &:nth-child(3){
-                            .icon{
-                                position: relative;
-                                top: -3px;
-                                width: 17.5px;height: 20px;
-                                background: transparent url('../media/svg/car-on-solid.svg') no-repeat center center;background-size: cover;
-                                display: flex;
-                            }
-                        }
-                    }
-                }
-
-                &:nth-child(3){
-                    @include flex();
-
-                    .item-nav{
-                        cursor: pointer;
-                        transition: .25s all;
-
-                        &:nth-child(1):hover{color: $verde;}
-
-                        &:nth-child(2){
-                            margin: 0 15px;
-                            width: 2px;height: 25px;
-                            background: #fff;
-                        }
-
-                        &:nth-child(3){
-                            font-weight: 600;font-size: 1.25em;
-                            color: $verde;
-                        }
-                    }
-                }
+                
             }
         }
     }
@@ -105,12 +36,15 @@
             width: 100%;height: 100%;
             background: $azulEscuro2;
             display: grid; place-items: center;
+            overflow: hidden;
+            transition: .5s;
 
             .nav-list{
                 transition: .5s all;
+                height: 50px;
 
                 &:nth-child(1){
-                    width:100%;height: 100%;
+                    width:100%;
                     @include flex();
                     justify-content: space-between;
                     padding: 0 25px;
@@ -152,7 +86,73 @@
                     }
                 }
 
-                &:nth-child(2),&:nth-child(3){display: none;opacity: 0;}
+                &:nth-child(2){
+                    @include flex();
+                    @media (min-width:275px) and (max-width:450px){flex-direction: column;height:125px}
+
+                    .item-nav{
+                        @include flex();
+                        cursor: pointer;
+                        transition: .25s all;
+                        
+                        .icon{border-radius: 0;margin-right: 10px}
+                        p{font-weight: 500;}
+
+                        &:nth-child(1){
+                            .icon{
+                                width: 22.5px;height: 20px;
+                                background: transparent url('../media/svg/plane-solid.svg') no-repeat center center;background-size: cover;
+                                display: flex;
+                            }
+                        }
+
+                        &:nth-child(2){
+                            .icon{
+                                position: relative;
+                                top: -1px;
+                                width: 20px;height: 20px;
+                                background: transparent url('../media/svg/hotel-solid.svg') no-repeat center center;background-size: cover;
+                                display: flex;
+                            }
+                            margin: 0 25px;
+                            
+                        @media (min-width:275px) and (max-width:450px){margin: 25px 0;}
+                        }
+
+                        &:nth-child(3){
+                            .icon{
+                                position: relative;
+                                top: -3px;
+                                width: 17.5px;height: 20px;
+                                background: transparent url('../media/svg/car-on-solid.svg') no-repeat center center;background-size: cover;
+                                display: flex;
+                            }
+                        }
+                    }
+                }
+                
+                &:nth-child(3){
+                    @include flex();
+
+                    .item-nav{
+                        cursor: pointer;
+                        transition: .25s all;
+
+                        &:nth-child(1):hover{color: $verde;}
+
+                        &:nth-child(2){
+                            margin: 0 15px;
+                            width: 2px;height: 25px;
+                            background: #fff;
+                        }
+
+                        &:nth-child(3){
+                            font-weight: 600;font-size: 1.25em;
+                            color: $verde;
+                        }
+                    }
+                }
+                
             }
         }
     }
